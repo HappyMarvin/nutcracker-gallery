@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#f5f1e9">
+  <meta name="description" content="Рабочая галерея вариантов Щелкунчика для выбора и ручной лепки.">
+  <title>Щелкунчик в скорлупке · выбор мастера</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#gallery">К вариантам</a>
+<section id="gate" class="gate" aria-labelledby="gate-title">
+  <div class="gate-sheet">
+    <div class="wordmark"><span class="brand-icon" aria-hidden="true">✦</span> МАЛЕНЬКАЯ МАСТЕРСКАЯ</div>
+    <p class="eyebrow">РАБОЧИЙ АЛЬБОМ · 24 ОКТЯБРЯ 2026</p>
+    <h1 id="gate-title">Щелкунчик<br><em>в скорлупке</em></h1>
+    <p class="gate-intro">Выбираем характер, шапку и детали<br>будущей игрушки.</p>
+    <form id="login-form">
+      <label for="password">Пароль для просмотра</label>
+      <div class="password-line"><input id="password" type="password" autocomplete="current-password" required inputmode="numeric" aria-describedby="login-error"><button id="show-password" type="button" aria-label="Показать пароль">Показать</button></div>
+      <p id="login-error" class="error" role="alert"></p>
+      <button class="primary" id="enter" type="submit">Открыть альбом <span aria-hidden="true">↗</span></button>
+    </form>
+    <p class="fine">Полимерная глина · ручная лепка · грецкий орех</p>
+  </div>
+  <span class="gate-outline" aria-hidden="true"></span>
+</section>
+
+<div id="app" hidden>
+  <header class="topbar"><a class="wordmark" href="#home"><span class="brand-icon" aria-hidden="true">✦</span> МАЛЕНЬКАЯ МАСТЕРСКАЯ</a><div class="top-actions"><span class="edition">АЛЬБОМ / 01</span><button id="logout" class="text-button">Закрыть альбом</button></div></header>
+  <main id="home">
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <div class="hero-copy"><p class="eyebrow">ЩЕЛКУНЧИК · ОБЩАЯ ПОДБОРКА</p><h1 id="hero-title">Большой характер.<br><em>Маленький орех.</em></h1><p class="lede">Собрали варианты для выбора<br class="desktop-only"> и ручной лепки.</p><p class="hero-description">Красное квадратное тело уже есть. Ищем шапку, волосы и усы, которые удобно повторять вручную и приятно рассматривать.</p><a class="primary" href="#gallery">Перейти к выбору <span aria-hidden="true">↓</span></a><p class="hero-caption" id="catalog-count"></p></div>
+      <div class="hero-art"><button class="hero-image" data-open="S" aria-label="Открыть общий вариант S"><img id="hero-s" alt="Алый шако с двумя гладкими белыми прядями" fetchpriority="high"><span class="image-label"><b>S</b> Общий синтез <span>↗</span></span></button><button class="hero-image secondary" data-open="N01" aria-label="Открыть гренадера N01"><img id="hero-n" alt="Красная гренадерка со снежинкой"><span class="image-label"><b>N01</b> Выбор соседа <span>↗</span></span></button><div class="art-footnote">Две идеи для первой примерки.<br>Низкое шако и высокая гренадерка.</div></div>
+    </section>
+    <section class="decision-strip wrap" aria-label="Как выбрать"><div><span class="step-number">01</span><p><b>Посмотрите рекомендации</b><br>У каждого варианта есть аргументы и нюансы.</p></div><div><span class="step-number">02</span><p><b>Отметьте понравившееся</b><br>Добавляйте в выбор и сравнивайте рядом.</p></div><div><span class="step-number">03</span><p><b>Сохраните решение</b><br>Скачайте список с вашими замечаниями.</p></div></section>
+
+    <section id="gallery" class="gallery-section wrap" aria-labelledby="gallery-title">
+      <div class="section-heading"><div><p class="eyebrow">ФОРМА, ХАРАКТЕР, ДЕТАЛИ</p><h2 id="gallery-title">Выбираем своего</h2></div><span class="quiet">Каждая карточка открывается крупно</span></div>
+      <nav class="tabs" aria-label="Разделы альбома"><button data-tab="recommended" aria-pressed="true">Рекомендации</button><button data-tab="all" aria-pressed="false">Все варианты</button><button data-tab="details" aria-pressed="false">Детали и лепка</button><button data-tab="references" aria-pressed="false">Референсы</button><button data-tab="notes" aria-pressed="false">Рассуждения</button><button data-tab="favorites" aria-pressed="false">Мой выбор <span id="tab-count">0</span></button></nav>
+      <div id="section-intro" class="section-intro"></div>
+      <div id="filters" class="filters"><label class="search-label"><span class="sr-only">Поиск по названию или коду</span><input id="search" type="search" placeholder="Найти название, деталь или код…"></label><label><span class="sr-only">Автор подборки</span><select id="collection"><option value="">Все подборки</option></select></label><label><span class="sr-only">Сложность</span><select id="ease"><option value="">Любая сложность</option><option>Простая</option><option>Средняя</option><option>Сложнее</option></select></label><label id="archive-filter" class="check-label" hidden><input id="archives" type="checkbox"> Промежуточные</label><button id="reset-filters" class="text-button">Сбросить</button></div>
+      <div id="results-meta" class="results-meta" aria-live="polite"></div>
+      <div id="grid" class="grid"></div>
+      <div id="empty" class="empty" hidden><h3>Пока ничего не найдено</h3><p>Измените поиск или сбросьте фильтры.</p></div>
+      <div id="essays" class="essays" hidden></div>
+      <section id="selection-note" class="selection-note" hidden><div><h3>Замечания к выбору</h3><p>Например: шапка S, волосы В1, роспись N01; без шарика на макушке.</p></div><label for="maker-note" class="sr-only">Замечания мастера</label><textarea id="maker-note" rows="4" placeholder="Что оставить, что упростить, какие детали объединить…"></textarea><p class="fine">Выбор и замечания сохраняются только в этом браузере. Чтобы передать их, скачайте или скопируйте список.</p></section>
+    </section>
+
+    <section class="maker wrap"><div><p class="eyebrow">ПЕРЕД ПЕРВОЙ СЕРИЕЙ</p><h2>Сначала —<br><em>один живой образец.</em></h2></div><div class="maker-copy"><p>Картинки помогают выбрать образ. Реальная скорлупка определит высоту, ширину и толщину шапки.</p><ul><li>Примерьте детали спереди и сбоку на нескольких скорлупках.</li><li>Оставьте видимый зазор до края и полоску лица между усами и зубами.</li><li>Золото, шнуры и эмблемы по возможности выполняйте росписью.</li><li>Сравните время изготовления простой и парадной версии.</li></ul><p class="fine">Оценки сложности относительные. Размеры на старых листах — ориентиры, не проверенные чертежи.</p></div></section>
+  </main>
+  <footer class="wrap footer"><span>Щелкунчик в скорлупке · рабочий альбом</span><span>24.10.2026 · Codex + материалы других агентов</span></footer>
+  <aside class="selection-bar" aria-label="Действия с выбором"><div><b id="selection-count">Ничего не выбрано</b><span id="selection-hint">Отметьте варианты сердечком</span></div><div class="selection-actions"><button id="show-selection">Мой выбор</button><button id="compare" disabled>Сравнить</button><button id="export" class="primary" disabled>Скачать список</button></div></aside>
+</div>
+
+<dialog id="detail-dialog" class="detail-dialog" aria-labelledby="detail-title"><div class="dialog-header"><span id="detail-code" class="eyebrow"></span><div><button id="previous" aria-label="Предыдущий вариант">←</button><button id="next" aria-label="Следующий вариант">→</button><button data-close="detail-dialog" aria-label="Закрыть подробности">✕</button></div></div><div id="detail-content" class="detail-layout"></div></dialog>
+<dialog id="compare-dialog" class="compare-dialog" aria-labelledby="compare-title"><div class="dialog-header"><div><h2 id="compare-title">Рядом — виднее</h2><p class="quiet">Прокрутите по горизонтали, если выбрано много вариантов.</p></div><button data-close="compare-dialog" aria-label="Закрыть сравнение">✕</button></div><div id="compare-content" class="compare-content"></div><div class="compare-footer"><button id="copy-selection">Скопировать выбор</button><button id="export-comparison" class="primary">Скачать список</button></div></dialog>
+<div id="toast" class="toast" role="status" hidden></div>
+<noscript><p class="noscript">Для просмотра альбома включите JavaScript в браузере.</p></noscript>
+</body></html>
